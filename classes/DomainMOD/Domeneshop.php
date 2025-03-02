@@ -86,7 +86,6 @@ class Domeneshop
                     $dns_servers = $fdom['nameservers'];
                     $autorenewal_status = (string) $fdom['renew'];
                     $domain_status = (string) $fdom['status'];
-                    print("returning values: " . $domain_status . ":" . $expiration_date . ":" . "DNS" . ":" . $privacy_status . ":" . $autorenewal_status . "\n");
                     return array($domain_status, $expiration_date, $dns_servers, $privacy_status, $autorenewal_status);
                 }
             }

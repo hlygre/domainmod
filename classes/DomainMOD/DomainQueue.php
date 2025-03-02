@@ -84,6 +84,12 @@ class DomainQueue
                     $account_id = $this->api->getAccountId($row->account_id);
                     list($domain_count, $domain_list) = $registrar->getDomainList($api_key, $account_id);
 
+                } elseif ($row->api_registrar_name == 'Domeneshop') {
+
+                    $registrar = new Domeneshop();
+                    list($api_key, $api_secret) = $this->api->getKeySecret($row->account_id);
+                    list($domain_count, $domain_list) = $registrar->getDomainList($api_key, $api_secret);
+
                 } elseif ($row->api_registrar_name == 'DreamHost') {
 
                     $registrar = new DreamHost();
@@ -244,6 +250,12 @@ class DomainQueue
                     $api_key = $this->api->getKey($row->account_id);
                     $account_id = $this->api->getAccountId($row->account_id);
                     list($expiration_date, $dns_servers, $privacy_status, $autorenew_status) = $registrar->getFullInfo($api_key, $account_id, $row->domain);
+
+                } elseif ($row->api_registrar_name == 'Domeneshop') {
+
+                    $registrar = new Domeneshop();
+                    list($api_key, $api_secret) = $this->api->getKeySecret($row->account_id);
+                    list($domain_status, $expiration_date, $dns_servers, $privacy_status, $autorenew_status) = $registrar->getFullInfo($api_key, $api_secret, $row->domain);
 
                 } elseif ($row->api_registrar_name == 'DreamHost') {
 
